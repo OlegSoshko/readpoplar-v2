@@ -60,3 +60,5 @@ export {
   jobit,
   tripguide,
 };
+
+export * from './products';

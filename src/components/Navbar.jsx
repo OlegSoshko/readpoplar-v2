@@ -7,13 +7,12 @@ import { logo, menu, close } from "../assets";
 
 export const Navbar = () => {
   const [active, setActive] = useState("");
-  const [toggle, setToggle] = useState(false);
+  const [visibleNavigation, setVisibleNavigation] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      if (scrollTop > 100) {
+      if (window.scrollY > 50) {
         setScrolled(true);
       } else {
         setScrolled(false);
@@ -25,11 +24,25 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const toggleVisibleNavigation = () => {
+    setVisibleNavigation(prev => !prev);
+  }
+
+  const handleClickLogo = () => {
+    setActive("");
+    window.scrollTo(0, 0);
+  }
+
+  const handleClickNavigation = (title) => {
+    toggleVisibleNavigation();
+    setActive(title);
+  }
+
   return (
     <nav
       className={`${
         styles.paddingX
-      } w-full flex items-center py-5 fixed top-0 z-20 ${
+      } w-full flex items-center fixed top-0 z-20 ${
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
@@ -37,10 +50,7 @@ export const Navbar = () => {
         <Link
           to='/'
           className='flex items-center gap-2'
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
+          onClick={handleClickLogo}
         >
           <img src={logo} alt='logo' className='w-40 h-40 object-contain' />
         </Link>
@@ -61,28 +71,25 @@ export const Navbar = () => {
 
         <div className='sm:hidden flex flex-1 justify-end items-center'>
           <img
-            src={toggle ? close : menu}
+            src={visibleNavigation ? close : menu}
             alt='menu'
             className='w-[28px] h-[28px] object-contain'
-            onClick={() => setToggle(!toggle)}
+            onClick={() => toggleVisibleNavigation()}
           />
 
           <div
             className={`${
-              !toggle ? "hidden" : "flex"
+              !visibleNavigation ? "hidden" : "flex"
             } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-              {navigationLinks.map((nav) => (
+              {navigationLinks.map(nav => (
                 <li
                   key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
                     active === nav.title ? "text-white" : "text-secondary"
                   }`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.title);
-                  }}
+                  onClick={() => handleClickNavigation(nav.title)}
                 >
                   <a href={`#${nav.id}`}>{nav.title}</a>
                 </li>
