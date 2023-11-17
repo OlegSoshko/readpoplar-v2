@@ -14,17 +14,18 @@ export const ProductCard = ({ index, title, icon }) => {
         }}
         className="green-pink-gradient p-px rounded-2xl sm:w-[360px] w-full h-full"
       >
-        <motion.div
-          variants={fadeIn('right', 'spring', 0.5 * index, 0.75)}
-          className='w-full bg-tertiary p-[1px] rounded-2xl shadow-card'
-        >
-          <div className='relative flex justify-center'>
-            <img src={icon} alt='web-development' className='w-80 object-contain' />
+        <div className='w-full bg-tertiary p-[1px] rounded-2xl shadow-card'>
+          <div className='relative h-[350px] mx-auto'>
+            <img
+              src={icon}
+              alt='web-development'
+              className='w-full h-full object-cover rounded-2xl'
+            />
           </div>
           <div className='mt-5'>
-            <h3 className='text-white text-[20px] font-bold text-center'>{title}</h3>
+            <h3 className='text-white text-[24px] font-bold text-center'>{title}</h3>
           </div>
-        </motion.div>
+        </div>
       </Tilt>
     </motion.div>
   );
