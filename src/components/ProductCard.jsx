@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 import { fadeIn } from '../utils';
 
-export const CardProduct = ({ index, title, icon }) => {
+export const ProductCard = ({ index, title, icon }) => {
   return (
     <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
       <Tilt
