@@ -62,3 +62,4 @@ export {
 };
 
 export * from './products';
+export * from './advantages';

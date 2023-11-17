@@ -1,11 +1,15 @@
 export const navigationLinks = [
   {
-    id: "about",
-    title: "About",
+    id: "advantages",
+    title: "Преимущества",
   },
   {
-    id: "work",
-    title: "Work",
+    id: "products",
+    title: "Продукция",
+  },
+  {
+    id: "how-order",
+    title: "Как сделать заказ",
   },
   {
     id: "contact",

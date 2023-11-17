@@ -5,10 +5,11 @@ import { products } from '../constants';
 import { fadeIn, textVariant } from '../utils';
 
 import { CardProduct } from './CardProduct';
+import { SectionWrapper } from '../hoc';
 
-export const Products = () => {
+const Products = () => {
   return (
-    <div className={`${styles.paddingX} max-w-7xl mx-auto"`}>
+    <>
       <motion.div variants={textVariant()}>
         <p className={styles.sectionHeadText}>База для мерча</p>
       </motion.div>
@@ -20,6 +21,8 @@ export const Products = () => {
             <CardProduct key={product.id} index={index} title={product.title} icon={product.icon} />
           ))}
         </div>
-    </div>
+    </>
   );
 };
+
+export default SectionWrapper(Products, 'products');
