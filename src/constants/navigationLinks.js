@@ -12,7 +12,7 @@ export const navigationLinks = [
     title: "Как сделать заказ",
   },
   {
-    id: "contact",
-    title: "Contact",
-  },
+    id: "feedbacks",
+    title: "Отзывы",
+  }
 ];
