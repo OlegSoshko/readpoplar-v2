@@ -3,3 +3,4 @@ export { products } from './products';
 export { howOrderSteps } from './howOrderSteps';
 export { advantages } from './advantages';
 export { testimonials } from './testimonials';
+export { contact } from './contact';
